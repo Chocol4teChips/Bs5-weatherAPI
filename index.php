@@ -13,8 +13,6 @@
 </head>
 
 <body>
-    hello world
-
     <div class="container mt-5 col-8">
         <div class="container mx-auto">
             <p class="text-center h1">What is the weather now....</p>
@@ -41,8 +39,6 @@
         </div>
     </div>
     </div>
-
-
 </body>
 <script>
 
@@ -50,7 +46,6 @@
         var urlDefualt = "https://api.openweathermap.org/data/2.5/weather?lat=7.1247794&lon=99.9977404&appid=585ebd9c6b56cac04e88cb2269a1cc6f";
         $.getJSON(urlDefualt)
             .done((data) => {
-
                 var datetime = convertHMS(data.dt);
                 var sunrise = convertHMS(data.sys["sunrise"]);
                 var sunset = convertHMS(data.sys["sunset"]);
@@ -74,12 +69,7 @@
                     line += "<p class='card-text'>ความชื้นในอากาศ : "+ humid  +"</p>";
                     line += "</div>"
                 $("#cardWeather").append(line);
-
-
-
-            }).fail((xhr, status, error) => {
-                
-            })
+            }).fail((xhr, status, error) => {})
     } 
 
     function LoadForcast() {
@@ -88,7 +78,6 @@
         var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + x + "&lon=" + y + "&appid=585ebd9c6b56cac04e88cb2269a1cc6f"
         $.getJSON(url)
             .done((data) => {
-
                 var datetime = convertHMS(data.dt);
                 var sunrise = convertHMS(data.sys["sunrise"]);
                 var sunset = convertHMS(data.sys["sunset"]);
@@ -101,7 +90,6 @@
                         console.log(value);
                     }
                 })
-                
                 var line = "<div id='dataWeather'>";
                     line += "<img src='https://media-exp1.licdn.com/dms/image/C560BAQHtvo47dVEisg/company-logo_200_200/0/1625026934671?e=2159024400&v=beta&t=vAmme9yUoENBxoBqeSX0VX9Ko02BtDdsvkqFpRWUMzo' class='card-img-top' ><div class='card-body'>"
                     line += "<h5 class='card-title my-3'>สถานที่ : "+ place +"</h5>";
@@ -112,12 +100,7 @@
                     line += "<p class='card-text'>ความชื้นในอากาศ : "+ humid  +"</p>";
                     line += "</div>"
                 $("#cardWeather").append(line);
-
-
-
-            }).fail((xhr, status, error) => {
-                
-            })
+            }).fail((xhr, status, error) => {})
     }
 
     function convertHMS(value) {
@@ -128,10 +111,6 @@
         var seconds = "0" + convert.getSeconds();
         return (hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2));
     }
-
-
-
-
     $(() => {
         setDefault();
         $("#btnSearch").click(() => {
@@ -139,8 +118,5 @@
             $("#dataWeather").hide();
         });
     });
-
 </script>
-
-
 </html>
